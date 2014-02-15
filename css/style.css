@@ -59,3 +59,15 @@ table {
 * End of style reset | Beginning of aerostyle
 *
 */
+
+p {
+    line-height: 2em;
+}
+
+div.bar {
+    display: inline-block;
+    width: 20px;
+    height: 75px;
+    background-color: teal;
+    margin: 2px;
+}

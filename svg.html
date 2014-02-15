@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="d3/d3.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            
+            //Data
+            var dataLength = 500
+            var dataScale = 50
+            var dataset = [];   //Define Data Array
+                for (var i=0; i < dataLength; i++) {    //Loop through 25 items
+                    var newNumber = Math.round(Math.random() * dataScale); //Create random normalized values, scale by 30
+                    dataset.push(newNumber); //Fill the array with the computed values
+                }
+                
+            //Width and height
+            var w = dataLength * 50;
+            var h = dataScale * 3;
+            
+            
+            //Create SVG element
+            var svg = d3.select("body")
+                        .append("svg")
+                        .attr("width", w)
+                        .attr("height", h);
+
+            var circles = svg.selectAll("circle")
+                .data(dataset)
+                .enter()
+                .append("circle");
+
+            circles.attr("cx", function(d, i) {
+                        return (i * (dataScale*3) + 25);
+                    })
+                   .attr("cy", h/2)
+                   .attr("r", function(d) {
+                        return d;
+                   })
+                   .attr("fill", "orange")
+                   .attr("stroke", "teal")
+                   .attr("stroke-width", function(d) {
+                        return d/3;
+                   });
+
+
+        </script>
+    </body>
+</html>

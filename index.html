@@ -3,25 +3,25 @@
     <head>
         <meta charset="utf-8">
         <title>D3 Test</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <script type="text/javascript" src="d3/d3.js"></script>
     </head>
     <body>
         <script type="text/javascript">
-            var dataset = [ 5, 10, 15, 20, 25 ];
+            var dataset = [];   //Define Data Array
+            for (var i=0; i < 25; i++) {    //Loop through 25 items
+                var newNumber = Math.round(Math.random() * 30); //Create random normalized values, scale by 30
+                dataset.push(newNumber); //Fill the array with the computed values
+            }
             
-            d3.select("body").selectAll("p")
+            d3.select("body").selectAll("div")
                 .data(dataset)
                 .enter()
-                .append("p")
-                .text(function(m) {
-                    return "I can count up to " + m;
-                })
-                .style("color", function(m) {
-                    if (m > 15) {   //Threshold of 15
-                        return "red";
-                    } else {
-                        return "black";
-                    }
+                .append("div")
+                .attr("class", "bar")
+                .style("height", function(m) {
+                    var barHeight = m * 5;
+                    return barHeight + "px";
                 });
 
         </script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="d3/d3.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var dataset = [];   //Define Data Array
+            for (var i=0; i < 25; i++) {    //Loop through 25 items
+                var newNumber = Math.round(Math.random() * 30); //Create random normalized values, scale by 30
+                dataset.push(newNumber); //Fill the array with the computed values
+            }
+            
+            d3.select("body").selectAll("div")
+                .data(dataset)
+                .enter()
+                .append("div")
+                .attr("class", "bar")
+                .style("height", function(m) {
+                    var barHeight = m * 5;
+                    return barHeight + "px";
+                });
+
+        </script>
+    </body>
+</html>

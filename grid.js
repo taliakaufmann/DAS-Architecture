@@ -17,9 +17,9 @@ function calendarWeekHour(id, width, height, square)
                     .attr("class", "chart");
 
     var row = grid.selectAll(".row")
-                  .data(calData)
+                .data(calData)
                 .enter().append("svg:g")
-                  .attr("class", "row");
+                .attr("class", "row");
 
     var col = row.selectAll(".cell")
                  .data(function (d) { return d; })
@@ -31,7 +31,7 @@ function calendarWeekHour(id, width, height, square)
                  .attr("height", function(d) { return d.height; })
                  .on('mouseover', function() {
                     d3.select(this)
-                        .style('fill', '#0F0');
+                        .style('fill', 'black');
                  })
                  .on('mouseout', function() {
                     d3.select(this)
@@ -79,14 +79,14 @@ function randomData(gridWidth, gridHeight, square)
         {
             newValue = Math.round(Math.random() * (100 - 1) + 1);
             data[index_a].push({ 
-                                time: index_b, 
-                                value: newValue,
-                                width: gridItemWidth,
-                                height: gridItemHeight,
-                                x: xpos,
-                                y: ypos,
-                                count: count
-                            });
+              time: index_b, 
+              value: newValue,
+              width: gridItemWidth,
+              height: gridItemHeight,
+              x: xpos,
+              y: ypos,
+              count: count
+           } );
             xpos += stepX;
             count += 1;
         }
